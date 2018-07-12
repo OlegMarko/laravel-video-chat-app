@@ -11,6 +11,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script>
+        window.user = {
+            id: parseInt("{{ auth()->id() }}"),
+            name: "{{ auth()->user() ? auth()->user()->name : null }}"
+        };
+
+        window.csrfToken = "{{ csrf_token() }}";
+
+        window.pusherAppKey = "{{ env('PUSHER_APP_KEY') }}";
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
